@@ -1,0 +1,368 @@
+.site-header {
+  background: $yellow;
+  box-shadow: 0 0 10px #000;
+  color: $purple;
+  height: 60px;
+  position: relative;
+  @include breakpoint($break-desktop) {
+    height: 90px;
+  }
+
+  .home & {
+    background: none;
+    box-shadow: none;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 4;
+  }
+}
+
+.site-header > .wrap {
+  display: table;
+  height: 60px;
+  width: 100%;
+  @include breakpoint($break-desktop) {
+    height: 90px;
+  }
+}
+
+.header-logo {
+  display: table-cell;
+  line-height: 0;
+  text-align: left;
+  vertical-align: middle;
+  width: 135px;
+  @include breakpoint($break-desktop) {
+    width: 100%;
+  }
+  .home & {
+    display: none;
+  }
+}
+
+.header-logo img {
+  height: 50px;
+  @include breakpoint($break-desktop) {
+    height: auto;
+  }
+}
+
+.header-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  bottom: 0;
+  display: none;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+
+  .show-mobile-menu & {
+    display: block;
+  }
+}
+
+.header-toggle-menu {
+  cursor: pointer;
+  display: table-cell;
+  font-size: 28px;
+  position: relative;
+  width: 60px;
+
+  &:before {
+    border-bottom: 0.125em solid $purple;
+    border-top: 0.375em double $purple;
+    box-sizing: content-box;
+    content: "";
+    height: 0.125em;
+    position: absolute;
+    right: 16px;
+    top: 22px;
+    width: 1em;
+
+    .home & {
+      border-color: #fff;
+    }
+  }
+
+  @include breakpoint($break-desktop) {
+    display: none;
+  }
+}
+
+.header-nav {
+  @include box-shadow(0 0 15px #000);
+  @include transition(left 150ms ease-in-out);
+
+  background: $yellow;
+  bottom: 0;
+  color: $purple;
+  position: fixed;
+  left: -265px;
+  top: 0;
+  width: 250px;
+  z-index: 8;
+
+  .show-mobile-menu & {
+    left: 0;
+  }
+
+  li {
+    & > a {
+      border-bottom: solid 1px $purple;
+      display: block;
+      font-size: 16px;
+      padding: 15px;
+      text-transform: uppercase;
+    }
+  }
+
+  .sub-menu {
+    background: #fff;
+  }
+
+  @include breakpoint($break-desktop) {
+    @include box-shadow(none);
+
+    background: none;
+    display: table-cell;
+    font-size: 0;
+    padding-right: 15px;
+    position: static;
+    text-align: right;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 100%;
+
+    li {
+      display: inline-block;
+      padding: 0 2px;
+      vertical-align: middle;
+
+      & > a {
+        @include title-font;
+        @include transition(all 150ms ease);
+        background: $purple;
+        border: 0;
+        color: $yellow;
+        font-size: 19px;
+        line-height: 26px;
+        padding: 8px 12px 0;
+        &:hover {
+          color: #fff;
+        }
+
+        &.streaming {
+          background: $red;
+        }
+
+        .home & {
+          background: rgba(255, 255, 255, 0.8);
+          color: $purple;
+          &:hover {
+            background: #fff;
+            color: $purple;
+          }
+
+          &.streaming {
+            color: $red;
+            &:hover {
+              color: $red;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Do not show first menu item (Home) in desktop */
+.header-menu > ul > li:first-child {
+  @include breakpoint($break-desktop) {
+    display: none;
+  }
+}
+
+.header-search-user {
+  display: table-cell;
+  padding-right: 10px;
+  text-align: right;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.header-search {
+  color: $purple;
+  display: inline-block;
+  padding: 0 10px;
+  position: relative;
+  vertical-align: middle;
+  .home & {
+    color: #fff;
+  }
+  @include breakpoint($break-desktop) {
+    background: #fff;
+    color: $purple;
+    height: 34px;
+    width: 170px;
+    .home & {
+      @include opacity(0.8);
+    }
+  }
+}
+
+.header-search-form {
+  display: none;
+  @include breakpoint($break-desktop) {
+    bottom: 0;
+    color: $purple;
+    display: block;
+    left: 0;
+    line-height: 34px;
+    position: absolute;
+    right: 0;
+    text-align: left;
+    top: 0;
+    .fa-search {
+      margin-left: 6px;
+    }
+  }
+}
+
+.header-search-input {
+  @extend %title-font;
+  display: none;
+  font-size: 19px;
+  @include breakpoint($break-desktop) {
+    background: none;
+    border: none;
+    bottom: 0;
+    color: $purple;
+    display: inline-block;
+    left: 0;
+    line-height: 26px;
+    padding: 8px 0 0 32px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+  }
+}
+
+.user-logged, .user-signin {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.user-signin > a {
+  @extend %title-font;
+  background: $purple;
+  color: #fff;
+  display: inline-block;
+  font-size: 19px;
+  padding: 8px 8px 4px;
+}
+
+.user-logged-picture {
+  @include border-radius(17px);
+  background-size: cover;
+  display: inline-block;
+  height: 34px;
+  vertical-align: middle;
+  width: 34px;
+}
+
+.user-logged-name {
+  display: none;
+}
+
+.site-header .menu-item-has-children {
+  position: relative;
+  .sub-menu {
+    display: none;
+    text-align: left;
+    @include breakpoint($break-desktop) {
+      position: absolute;
+      z-index: 1;
+      & > li {
+        display: block;
+        padding: 0;
+        & > a {
+          background: #fff;
+          color: $purple;
+          &:hover {
+            background: $purple;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+
+.fa-play-circle {
+  margin-right: 5px;
+}
+
+.user-logged-menu {
+  @include box-shadow(1px 1px 3px rgba(0, 0, 0, 0.5));
+  background: #fff;
+  padding: 10px;
+  position: absolute;
+  right: 3px;
+  top: 42px;
+  width: 300px;
+
+  &::after {
+    color: #fff;
+    content: "▲";
+    display: block;
+    font-size: 12px;
+    position: absolute;
+    right: 10px;
+    top: -14px;
+  }
+}
+
+.user-logged-menu-picture {
+  $sz: 100px;
+  @include border-radius($sz/2);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: inline-block;
+  height: $sz;
+  vertical-align: middle;
+  width: $sz;
+}
+
+.user-logged-menu-info {
+  display: inline-block;
+  margin-left: 15px;
+  max-width: 165px;
+  vertical-align: middle;
+}
+
+.user-logged-menu-name {
+  @extend %title-font;
+  @include border-radius(3px);
+  background: $purple;
+  color: #fff;
+  font-size: 20px;
+  letter-spacing: 0;
+  margin-bottom: 5px;
+  max-width: 100%;
+  overflow: hidden;
+  padding: 8px 8px 3px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.user-logged-menu-ul  > li > a {
+  font-size: 14px;
+  text-transform: uppercase;
+  &:hover {
+    color: $red;
+  }
+}

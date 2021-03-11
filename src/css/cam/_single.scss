@@ -1,0 +1,219 @@
+@include breakpoint($break-tablet) {
+  .single-content {
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 5%;
+    vertical-align: top;
+    width: 65%;
+  }
+
+  .single-sidebar {
+    display: inline-block;
+    font-size: 16px;
+    vertical-align: top;
+    width: 30%;
+  }
+}
+
+.single-taxonomy {
+  margin-bottom: 15px;
+}
+
+.single-taxonomy > a {
+  @extend %title-font;
+  @include border-radius(3px);
+  background: $purple;
+  color: #fff;
+  font-size: 21px;
+  padding: 8px 8px 2px;
+}
+
+.single-title {
+  @extend %title-font;
+  font-size: 36px;
+}
+
+.single-meta {
+  @extend %default-margin;
+  font-size: 14px;
+  margin-top: 0;
+  text-transform: uppercase;
+
+  @include breakpoint($break-tablet) {
+    display: table;
+    & > * {
+      display: table-cell;
+      padding-right: 5px;
+      white-space: nowrap;
+    }
+  }
+}
+
+.single-author {
+  font-weight: bold;
+}
+
+.author-picture {
+  @include border-radius(16px);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: inline-block;
+  height: 32px;
+  margin-right: 5px;
+  vertical-align: middle;
+  width: 32px;
+}
+
+.single-date {
+  font-size: 12px;
+}
+
+.social-sep {
+  /* !important is used to override .single-meta > * */
+  display: none !important;
+
+  @include breakpoint($break-tablet) {
+    display: table-cell !important;
+    vertical-align: middle;
+    width: 100%;
+    hr {
+      border: 0;
+      border-bottom: solid 1px $gray;
+    }
+  }
+}
+
+.single-meta .social-buttons {
+  /* !important is used to override .single-meta > * */
+  display: block !important;
+  @include breakpoint($break-tablet) {
+    display: table-cell !important;
+  }
+}
+
+.entry {
+  font-size: 18px;
+  line-height: 1.3em;
+
+  blockquote, code, div, h1, h2, h3, h4, h5, h6, ol, p, pre, ul {
+    @extend %default-margin;
+  }
+
+  h2 {
+    font-size: 180%;
+  }
+
+  h3 {
+    font-size: 140%;
+  }
+
+  h4 {
+    font-size: 100%;
+    font-weight: bold;
+  }
+
+  h5 {
+    font-size: 80%;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  ul {
+    list-style: square;
+    margin-left: 20px;
+  }
+
+  ol {
+    list-style: decimal;
+    margin-left: 20px;
+  }
+
+  blockquote {
+    border-left: solid 10px $gray;
+    padding-left: 20px;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  strong {
+    font-weight: 700;
+  }
+
+  small {
+    font-size: 85%;
+  }
+
+  a {
+    color: $red;
+    text-decoration: none;
+    word-wrap: break-word;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.sidebar-section {
+  @extend %default-margin;
+  margin-top: 0;
+}
+
+.sidebar-title {
+  @extend %title-font;
+  font-size: 24px;
+  margin-bottom: 10px;
+  & > span {
+    @include border-radius(3px);
+    color: #fff;
+    display: inline-block;
+    padding: 8px 8px 0;
+  }
+}
+
+.subscribe-input {
+  background: #fff;
+  border: solid 1px $gray;
+  display: block;
+  margin-bottom: 5px;
+  padding: 4px 8px;
+  width: 100%;
+}
+
+.subscribe-button {
+  background: $yellow;
+  border: solid 1px $yellow;
+  color: #fff;
+  font-size: 14px;
+  padding: 4px 8px;
+  text-transform: uppercase;
+}
+
+.subscribe-msg {
+  color: $dark-gray;
+  font-size: 0.85em;
+}
+
+.sidebar-temas-more {
+  color: $purple;
+  display: block;
+  font-size: 0.85em;
+  margin-top: 10px;
+  text-transform: uppercase;
+  &:hover {
+    @include opacity(0.8);
+  }
+}
+
+.related-item {
+  margin: 5px 0;
+}
+
+.related-cat {
+  color: $red;
+  display: inline-block;
+  margin-right: 5px;
+  text-transform: uppercase;
+}

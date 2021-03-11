@@ -1,0 +1,10 @@
+{
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": [
+    "eslint-plugin-react"
+  ]
+}

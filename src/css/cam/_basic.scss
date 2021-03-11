@@ -1,0 +1,159 @@
+$fa-font-path: "../static/fonts";
+
+@import "breakpoint";
+@import "compass";
+@import "font-awesome";
+
+@import "../shared/reset";
+@import "../shared/align";
+@import "../shared/wp-common";
+
+@import "../shared/fonts/blogger-sans";
+@import "../shared/fonts/just-another-hand";
+
+// Breakpoints
+$break-tablet: 850px;
+$break-desktop: 1150px;
+$break-big-desktop: 1400px;
+
+// Colors
+$dark-gray: #888;
+$gray: #ccc;
+$light-gray: #eee;
+$lighter-purple: #8A6C87;
+$light-purple: #4A2C47;
+$purple: #2C0E28;
+$red: #9F0737;
+$yellow: #F5BF27;
+
+// Fonts
+%text-font {
+  font: 400 16px/140% 'blogger-sans', Helvetica, Arial, sans-serif;
+}
+
+%title-font {
+  font: 400 16px/100% 'Just Another Hand', Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+}
+
+@mixin title-font {
+  font: 400 16px/100% 'Just Another Hand', Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+}
+
+input, button, select {
+  @extend %text-font;
+}
+
+button {
+  cursor: pointer;
+}
+
+html {
+  @extend %text-font;
+  background: #f7f7f7;
+  font-feature-settings: "liga";
+  text-rendering: optimizelegibility;
+
+  // Fix Mac OS X font weight
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, video {
+  max-width: 100%;
+}
+
+small {
+  font-size: 85%;
+}
+
+@mixin solid-button($font-size, $bg-color, $fg-color) {
+  @include title-font;
+  background: $bg-color;
+  border: 0;
+  color: $fg-color;
+  font-size: $font-size;
+  padding: $font-size/3 $font-size/3 0;
+}
+
+@mixin dashed-transparent-button($font-size, $fg-color) {
+  @include title-font;
+  background: none;
+  border: 1px dashed $fg-color;
+  color: $fg-color;
+  display: inline-block;
+  font-size: $font-size;
+  padding: $font-size/3 $font-size/3 0;
+}
+
+@mixin dashed-button($font-size, $bg-color, $fg-color) {
+  @include title-font;
+  background: none;
+  border: 1px dashed $bg-color;
+  display: inline-block;
+  font-size: $font-size;
+  padding: $font-size / 10;
+  & > span {
+    background: $bg-color;
+    color: $fg-color;
+    display: inline-block;
+    padding: $font-size/3 $font-size/3 0;
+  }
+}
+
+.wrap {
+  margin: 0 auto;
+  max-width: $break-desktop;
+}
+
+.default-wrap {
+  padding: 20px 10px;
+  @include breakpoint($break-tablet) {
+    font-size: 0;
+    padding: 30px 15px;
+  }
+  @include breakpoint($break-desktop) {
+    padding: 30px 0;
+  }
+  &.no-padding-bottom {
+    padding-bottom: 0 !important;
+  }
+}
+
+%default-margin {
+  margin: 15px 0;
+  @include breakpoint($break-desktop) {
+    margin: 25px 0;
+  }
+}
+
+.if-not-sent {
+  display: inline-block;
+  button:disabled & {
+    display: none;
+  }
+}
+
+.if-sending {
+  display: none;
+  button:disabled & {
+    display: inline-block;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.bg-red {
+  background: $red;
+}
+
+.bg-purple {
+  background: $purple;
+}
+
+.bg-yellow {
+  background: $yellow;
+}

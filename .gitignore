@@ -1,0 +1,13 @@
+/bower_components
+/node_modules
+/vendor
+composer.lock
+
+/build
+/dist
+/\.sass-cache
+
+\.*\.swp
+
+/\.idea
+/dolores.iml

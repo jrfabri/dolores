@@ -1,0 +1,259 @@
+.temas-flow-item {
+  @extend .flow-item;
+  @include breakpoint($break-tablet) {
+    width: 25%;
+  }
+}
+
+.temas-flow-item-description-container {
+  @extend %align-middle-container;
+  height: 150px;
+  padding: 0 10px 20px;
+}
+
+.temas-flow-item-description {
+  @extend %align-middle-element;
+}
+
+.temas-flow-item-title-container {
+  @extend .flow-item-title-container;
+  border-top: solid 2px #fff;
+  padding: 0 10px;
+  position: relative;
+  &::after {
+    @include border-radius(20px);
+    border: solid 2px #fff;
+    content: "•";
+    display: block;
+    font-size: 72px;
+    height: 40px;
+    left: 50%;
+    line-height: 33px;
+    margin-left: -20px;
+    position: absolute;
+    top: -22px;
+    width: 40px;
+  }
+}
+
+.grid-temas-list {
+  font-size: 0;
+  @include breakpoint($break-tablet) {
+    padding-top: 30px;
+  }
+}
+
+.grid-tema {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 350px;
+
+  @include breakpoint($break-tablet) {
+    display: inline-block;
+    margin-bottom: 30px;
+    vertical-align: top;
+    width: 49%;
+    &:nth-child(2n) {
+      margin-left: 2%;
+    }
+  }
+}
+
+.grid-tema-link {
+  @extend %align-middle-container;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  display: block;
+  height: 100%;
+  text-align: center;
+  width: 100%;
+  &[href]:hover {
+    background: rgba(0, 0, 0, 0.7);
+    .grid-tema-action {
+      background: #fff;
+      color: #000;
+    }
+  }
+}
+
+.grid-tema-wrap {
+  @extend %align-middle-element;
+}
+
+.grid-tema-name {
+  @extend %title-font;
+  font-size: 24px;
+  letter-spacing: 0;
+  margin-bottom: 15px;
+}
+
+.grid-tema-action {
+  background: none;
+  color: #fff;
+  border: solid 2px #fff;
+  padding: 6px 12px;
+  text-transform: uppercase;
+}
+
+.grid-tema-soon {
+  font-size: 16px;
+  font-style: italic;
+  text-transform: lowercase;
+}
+
+.temas-form {
+  color: #fff;
+  padding: 5px;
+  text-align: center;
+  @include breakpoint($break-tablet) {
+    padding: 30px 0;
+  }
+}
+
+.temas-form-title {
+  @extend %title-font;
+  font-size: 24px;
+  letter-spacing: 0;
+  @include breakpoint($break-tablet) {
+    font-size: 36px;
+  }
+}
+
+.temas-form-description {
+  font-size: 18px;
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+.bairros-form-description {
+  @extend .temas-form-description;
+  margin: 20px auto;
+  strong {
+    font-weight: 700;
+  }
+}
+
+.bairros-button-container {
+  margin: 20px auto;
+}
+
+.bairros-button {
+  @include transition(all 150ms ease-in-out);
+  @extend %title-font;
+  background: none;
+  border: solid 2px #fff;
+  color: #fff;
+  letter-spacing: 0;
+  padding: 5px 10px;
+
+  &:hover {
+    background: #fff;
+    color: $purple;
+  }
+}
+
+.temas-form-form {
+  text-align: left;
+  @include breakpoint($break-tablet) {
+    margin: 20px auto 0;
+    width: 500px;
+  }
+}
+
+.temas-posts {
+  padding: 10px;
+  @include breakpoint($break-tablet) {
+    padding: 30px 0;
+  }
+}
+
+.temas-posts-title {
+  text-align: center;
+
+  & > span {
+    @extend %title-font;
+    background: #000;
+    color: #fff;
+    display: inline-block;
+    font-size: 18px;
+    letter-spacing: 0;
+    padding: 5px 10px;
+
+    @include breakpoint($break-tablet) {
+      font-size: 26px;
+    }
+  }
+}
+
+.bairros-flow-item {
+  @extend .flow-item;
+  color: #000;
+  @include breakpoint($break-tablet) {
+    width: 25%;
+  }
+}
+
+.bairros-flow-item-description-container {
+  @extend %align-middle-container;
+  border-top: solid 2px #000;
+  height: 180px;
+  padding: 0 10px 20px;
+  position: relative;
+  &::after {
+    @include border-radius(20px);
+    border: solid 2px #000;
+    content: "•";
+    display: block;
+    font-size: 72px;
+    height: 40px;
+    left: 50%;
+    line-height: 33px;
+    margin-left: -20px;
+    position: absolute;
+    top: -22px;
+    width: 40px;
+  }
+}
+
+.bairros-flow-item-description {
+  @extend %align-middle-element;
+}
+
+.bairros-flow-item-title-container {
+  @extend .flow-item-title-container;
+  height: 100px;
+}
+
+.locais-map-container, .locais-map-container > * {
+  height: 480px;
+}
+
+.map-marker {
+  @extend %text-font;
+  font-size: 12px;
+  white-space: nowrap;
+  strong {
+    font-weight: 700;
+  }
+}
+
+.map-marker-title {
+  @extend %title-font;
+  font-size: 16px;
+  letter-spacing: 0;
+}
+
+.map-marker-description {
+  line-height: 1.1em;
+  margin: 8px 0;
+}
+
+.map-marker-button {
+  @extend %title-font;
+  background: $purple;
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: 0;
+  padding: 3px 6px;
+}

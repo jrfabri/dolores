@@ -1,0 +1,90 @@
+$fa-font-path: "../static/fonts";
+
+@import "breakpoint";
+@import "compass";
+@import "font-awesome";
+
+@import "../shared/reset";
+@import "../shared/align";
+@import "../shared/wp-common";
+
+// Breakpoints
+$break-tablet: 850px;
+$break-desktop: 1150px;
+$break-big-desktop: 1400px;
+
+// Global dimensions
+$header-height: 60px;
+
+// Colors
+$dark-purple: #19083C;
+$dark-gray: #888;
+$gray: #ccc;
+$light-gray: #eee;
+$orange: #d58316;
+$purple: #39376f;
+$red: #c22;
+$teal: #258A8B;
+
+// Fonts
+@import "../shared/fonts/bitter";
+
+%text-font {
+  font: 400 16px/140% 'Bitter', Georgia, 'Times New Roman', sans-serif;
+}
+
+%title-font {
+  font: 700 20px/140% 'Bitter', Georgia, 'Times New Roman', sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@mixin title-font {
+  font: 700 20px/140% 'Bitter', Georgia, 'Times New Roman', sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+html {
+  @extend %text-font;
+  background: $light-gray;
+  color: #000;
+  font-feature-settings: "liga";
+  text-rendering: optimizelegibility;
+
+  // Fix Mac OS X font weight
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.entry iframe {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+img, video {
+  height: auto;
+  max-width: 100%;
+}
+
+button, input {
+  @extend %text-font;
+}
+
+button {
+  cursor: pointer;
+}
+
+.social-media {
+  & > * {
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+
+  .fb-like, .fb-share-button {
+    // Hack to fix top padding
+    line-height: 0;
+  }
+}

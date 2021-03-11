@@ -1,0 +1,136 @@
+.grid-list {
+  font-size: 0;
+  padding: 0 10px;
+  & > li {
+    border-top: solid 1px $gray;
+    &:first-child {
+      border-top: none;
+    }
+  }
+  @include breakpoint($break-tablet) {
+    margin: 20px 0 10px;
+    & > li {
+      border: 0;
+      display: inline-block;
+      margin-left: 2%;
+      width: 49%;
+      &:nth-child(2n+1) {
+        margin-left: 0;
+      }
+    }
+  }
+  @include breakpoint($break-desktop) {
+    margin: 30px 0 10px;
+    padding: 0;
+    & > li {
+      margin-left: 1.25% !important;
+      width: 32.5%;
+      &:nth-child(3n+1) {
+        margin-left: 0 !important;
+      }
+    }
+  }
+}
+
+.grid-post {
+  clear: both;
+  display: block;
+  padding: 10px 0;
+  @include breakpoint($break-tablet) {
+    margin-bottom: 20px;
+    padding: 0;
+  }
+}
+
+.grid-post-thumb {
+  display: inline-block;
+  margin-right: 2%;
+  vertical-align: top;
+  width: 49%;
+}
+
+.grid-post-text {
+  display: inline-block;
+  vertical-align: top;
+  width: 49%;
+}
+
+.grid-post-category {
+  @extend %title-font;
+  font-size: 16px;
+  line-height: 1.1em;
+  margin: 5px 0;
+  @include breakpoint($break-tablet) {
+    font-size: 20px;
+    line-height: 1.1em;
+    margin-bottom: 0;
+  }
+}
+
+.grid-post-title {
+  font-size: 16px;
+  line-height: 1.1em;
+  @include breakpoint($break-tablet) {
+    font-size: 18px;
+    line-height: 1.1em;
+  }
+}
+
+.list-list {
+  font-size: 19px;
+  line-height: 1.3em;
+  & > li {
+    margin: 20px 0;
+  }
+}
+
+.list-post {
+  display: table;
+  width: 100%;
+  .fa {
+    color: $yellow;
+    display: table-cell;
+    padding-top: 2px;
+    vertical-align: top;
+  }
+  .list-post-info {
+    display: table-cell;
+    padding-left: 10px;
+    vertical-align: top;
+    width: 100%;
+  }
+}
+
+.list-post-title {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.list-post-content {
+  font-size: 14px;
+  line-height: 1.3em;
+}
+
+.list-post-author {
+  @extend .list-post-content;
+  text-transform: uppercase;
+}
+
+.pagination {
+  @extend %default-margin;
+  color: $purple;
+  font-size: 18px;
+  text-align: center;
+  a:hover {
+    text-decoration: underline;
+  }
+  .page-numbers {
+    display: inline-block;
+    padding: 5px 8px;
+  }
+  .current {
+    background: $purple;
+    color: #fff;
+    font-weight: bold;
+  }
+}

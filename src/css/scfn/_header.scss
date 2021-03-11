@@ -1,0 +1,391 @@
+/**
+ * Sorry for the weird selectors. The header has 3 states:
+ *
+ * 1. homepage [ie, .home:not(.paged)] and .show-opaque-header is not set
+ *    Don't add padding, don't show opaque header
+ *
+ * 2. homepage and .show-opaque-header is set
+ *    Don't add padding, show opaque header
+ *
+ * 3. not homepage
+ *    Add padding, show opaque header
+ *
+ * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ * !!! TODO: REFACTOR, PLEASE !!!
+ * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ */
+
+body.paged, body:not(.home) {
+  padding-top: $header-height;
+}
+
+.site-header {
+  color: #fff;
+  height: $header-height;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 4;
+
+  @include breakpoint($break-desktop) {
+    top: 10px;
+  }
+
+  body.paged &, body:not(.home) &, body.home.show-opaque-header & {
+    @include box-shadow(0 0 15px #000);
+    background: $purple image-url('scfn/bg-pattern-light-purple.jpg') repeat;
+    top: 0;
+
+    .header-logo {
+      display: table-cell;
+    }
+  }
+
+  & > .wrap {
+    display: table;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.header-logo {
+  display: none;
+  padding-left: 8px;
+  vertical-align: middle;
+  white-space: nowrap;
+
+  @include breakpoint($break-desktop) {
+    padding-left: 0;
+  }
+
+  img {
+    max-width: 240px;
+    vertical-align: middle;
+
+    @include breakpoint($break-tablet) {
+      max-width: none;
+    }
+  }
+}
+
+.header-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  bottom: 0;
+  display: none;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+
+  .show-mobile-menu & {
+    display: block;
+  }
+}
+
+.header-toggle-menu {
+  cursor: pointer;
+  display: none;
+  font-size: 28px;
+  padding-left: 1.25em;
+  position: relative;
+  width: 40px;
+
+  &:before {
+    box-sizing: content-box;
+    content: "";
+    position: absolute;
+    top: 21px;
+    left: 0;
+    width: 1em;
+    height: 0.125em;
+    border-top: 0.375em double #fff;
+    border-bottom: 0.125em solid #fff;
+  }
+}
+
+.header-nav {
+  @include box-shadow(0 0 15px #000);
+  @include transition(right 150ms ease-in-out);
+
+  background: $orange;
+  bottom: 0;
+  position: fixed;
+  right: -265px;
+  text-align: right;
+  top: 0;
+  vertical-align: middle;
+  width: 250px;
+  z-index: 8;
+
+  .show-mobile-menu & {
+    right: 0;
+  }
+
+  @include breakpoint($break-desktop) {
+    @include box-shadow(none);
+
+    background: none;
+    display: table-cell;
+    font-size: 0;
+    position: static;
+    width: 100%;
+  }
+}
+
+.header-menu, .header-search-user {
+  @include breakpoint($break-desktop) {
+    display: inline-block;
+  }
+}
+
+.header-menu, .header-search-user {
+  li {
+    & > a, & > form {
+      border-bottom: solid 1px #fff;
+      display: block;
+      font-weight: 700;
+      padding: 15px;
+      text-transform: uppercase;
+
+      &.header-search-form {
+        position: relative;
+
+        .fa {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  @include breakpoint($break-desktop) {
+    li {
+      display: inline-block;
+      padding: 0 2px;
+      vertical-align: middle;
+
+      & > a, & > form {
+        @include transition(all 150ms ease);
+
+        background: rgba(255, 255, 255, 0.8);
+        border: 0;
+        color: $orange;
+        font-size: 12px;
+        padding: 5px 12px;
+
+        &.header-search-form {
+          padding: 5px 10px;
+          text-align: left;
+          width: 180px;
+        }
+
+        &:link:hover {
+          background: #fff;
+        }
+
+        body.paged &, body:not(.home) &, body.home.show-opaque-header & {
+          border: solid 2px #fff;
+          background: none;
+          color: #fff;
+
+          &:link:hover {
+            background: none;
+            border-color: $orange;
+            color: $orange;
+          }
+        }
+      }
+
+      &.user-signin > a {
+        background: $orange;
+        color: #fff;
+        &:hover {
+          background: $orange;
+        }
+
+        body.paged &, body:not(.home) &, body.home.show-opaque-header & {
+          background: #fff;
+          color: $purple;
+          &:hover {
+            background: #fff;
+            border-color: #fff;
+            color: $purple;
+          }
+        }
+      }
+
+      &.user-logged > a {
+        background: none !important;
+        border: 0 !important;
+        padding: 0;
+      }
+    }
+  }
+}
+
+/* Do not show first menu item (Home) in desktop */
+.header-menu > ul > li:first-child {
+  @include breakpoint($break-desktop) {
+    display: none;
+  }
+}
+
+.site-header {
+  .menu-item-has-children {
+    position: relative;
+  }
+
+  .sub-menu {
+    background: #fff;
+    display: none;
+
+    @include breakpoint($break-desktop) {
+      position: absolute;
+      text-align: left;
+    }
+
+    li {
+      display: block;
+
+      /**
+       * XXX The "!important"s are required to fix things in desktop opaque
+       * menu state. This must be fixed by refactoring!
+       */
+
+      & > a {
+        border-color: $orange;
+        color: $orange !important;
+        white-space: nowrap;
+      }
+
+      @include breakpoint($break-desktop) {
+        padding: 0;
+        & > a {
+          border: 0 !important;
+          &:hover {
+            background: $orange !important;
+            color: #fff !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+.header-search-input {
+  background: transparent;
+  border: 0;
+  bottom: 0;
+  color: inherit;
+  height: 100%;
+  left: 0;
+  padding-left: 10px;
+  padding-right: 40px;
+  position: absolute;
+  right: 0;
+  text-align: right;
+  top: 0;
+  width: 100%;
+
+  @include input-placeholder {
+    @include opacity(0.7);
+    color: inherit;
+  }
+
+  @include breakpoint($break-desktop) {
+    font-size: 13px;
+    text-align: left;
+    padding-left: 30px;
+    padding-right: 5px;
+  }
+}
+
+.user-logged-picture {
+  @include border-radius(16px);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: inline-block;
+  height: 32px;
+  vertical-align: middle;
+  width: 32px;
+}
+
+.user-logged-name {
+  margin-left: 5px;
+  vertical-align: middle;
+  @include breakpoint($break-desktop) {
+    display: none;
+  }
+}
+
+.user-logged-menu {
+  @include breakpoint($break-desktop) {
+    @include box-shadow(1px 1px 3px rgba(0, 0, 0, 0.5));
+    padding: 10px;
+    right: 3px;
+    top: 42px;
+    width: 320px;
+
+    &::after {
+      color: #fff;
+      content: "▲";
+      display: block;
+      font-size: 12px;
+      position: absolute;
+      right: 10px;
+      top: -14px;
+    }
+
+    .user-logged-menu-ul > li > a {
+      padding: 0;
+      &:hover {
+        background: none !important;
+        color: $purple !important;
+      }
+    }
+  }
+}
+
+.user-logged-menu-picture {
+  display: none;
+
+  @include breakpoint($break-desktop) {
+    $sz: 120px;
+    @include border-radius($sz/2);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: inline-block;
+    height: $sz;
+    vertical-align: middle;
+    width: $sz;
+  }
+}
+
+.user-logged-menu-info {
+  @include breakpoint($break-desktop) {
+    display: inline-block;
+    margin-left: 15px;
+    max-width: 165px;
+    vertical-align: middle;
+  }
+}
+
+.user-logged-menu-name {
+  @extend %title-font;
+  display: none;
+  @include breakpoint($break-desktop) {
+    background: $orange;
+    color: #fff;
+    display: block;
+    font-size: 13px;
+    letter-spacing: 0;
+    margin-bottom: 10px;
+    max-width: 100%;
+    overflow: hidden;
+    padding: 4px 8px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

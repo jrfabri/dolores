@@ -1,0 +1,91 @@
+.calendar-table {
+  font-size: 15px;
+  line-height: 1.5em;
+  width: 100%;
+}
+
+.calendar-row {
+  @include display-flex();
+  margin: 10px 0;
+}
+
+.calendar-cell {
+
+  @include breakpoint($break-tablet) {
+    display: table-cell;
+    margin: 0;
+    padding: 5px 0;
+    vertical-align: top;
+  }
+
+  display: block;
+  margin-left: 70px;
+
+  & > .event-title, & > .event-location, & > .event-description {
+    margin: 0;
+  }
+}
+
+.calendar-date {
+  align-items: center;
+  background-color: $dark-purple;
+  @include border-radius(3px);
+  color: $orange;
+  display: flex;
+  font-size: 13px;
+  font-weight: bold;
+  margin: 0;
+  text-align: center;
+  text-transform: capitalize;
+  width: 120px;
+
+  @include breakpoint($break-tablet) {
+    font-size: inherit;
+  }
+}
+
+.calendar-summary {
+  background: #fff;
+  padding: 1em;
+  border-radius: 3px;
+}
+
+.calendar-time, .event-location, .event-description, .calendar-link-container {
+  font-size: 13px;
+  line-height: 1.6em;
+
+  &.calendar-time, &.calendar-link-container {
+    @include breakpoint($break-tablet) {
+      font-size: inherit;
+      line-height: inherit;
+    }
+  }
+}
+
+.event-title {
+  line-height: 1em;
+  margin-bottom: 5px !important;
+
+  @include breakpoint($break-tablet) {
+    line-height: inherit;
+    margin: 0 !important;
+  }
+}
+
+.encontro-bairro{
+  background-color: $dark-purple;
+  box-sizing: border-box;
+  color: #fff;
+  padding-top: 1em;
+  padding-bottom: 2em;
+  text-align: center;
+  & > h2 {
+    font-size: 2em;
+    padding: 1em;
+  }
+  & > a {
+    border: 1px solid #fff;
+    padding: .5em;
+    text-transform: uppercase;
+  }
+}

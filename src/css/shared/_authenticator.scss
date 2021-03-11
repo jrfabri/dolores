@@ -1,0 +1,36 @@
+.signin-text {
+  text-align: center;
+}
+
+.signin-button {
+  @extend %text-font;
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  display: block;
+  margin: 3px 0;
+  padding: 15px 15px 15px 50px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+
+  .fa {
+    left: 6px;
+    top: 12px;
+    position: absolute;
+  }
+
+  @include breakpoint($break-tablet) {
+    font-size: 17px;
+  }
+}
+
+.signin-facebook {
+  background: #3b5998;
+}
+
+.signin-google {
+  background: #d34836;
+}

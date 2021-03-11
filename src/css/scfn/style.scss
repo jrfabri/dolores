@@ -1,0 +1,29 @@
+@import "basic";
+
+.wrap {
+  margin: 0 auto;
+  max-width: $break-desktop;
+}
+
+@import "../shared/authenticator";
+@import "../shared/explanation";
+@import "../shared/social";
+
+@import "header";
+@import "footer";
+
+@import "404";
+@import "archive";
+@import "calendar";
+@import "comments";
+@import "flow";
+@import "grid";
+@import "grid-ideias";
+@import "hero";
+@import "home";
+@import "lightbox";
+@import "profile";
+@import "signup";
+@import "single";
+@import "tema";
+@import "temas";

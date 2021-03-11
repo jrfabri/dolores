@@ -1,0 +1,171 @@
+.grid-ideias-list {
+  @include breakpoint($break-tablet) {
+    font-size: 0;
+    padding-top: 30px;
+  }
+}
+
+.grid-ideia {
+  @include border-radius(10px);
+  @include box-shadow(1px 1px 3px rgba(0, 0, 0, 0.5));
+  background: #fff;
+  font-size: 14px;
+  height: 320px;
+  margin: 10px;
+  padding: 15px 15px 0 15px;
+  position: relative;
+  text-align: left;
+  vertical-align: middle;
+
+  &.with-tax {
+    height: 560px;
+  }
+
+  @include breakpoint($break-tablet) {
+    display: inline-block;
+    margin: 0 0 30px 2%;
+    width: 32%;
+
+    &:nth-child(3n+1) {
+      margin-left: 0;
+    }
+  }
+}
+
+.grid-ideia-tax {
+  @include border-corner-radius(top, left, 10px);
+  @include border-corner-radius(top, right, 10px);
+  background-size: cover;
+  height: 240px;
+  margin: -15px -15px 30px -15px;
+  position: relative;
+}
+
+.grid-ideia-tax-title {
+  @extend %title-font;
+  bottom: -20px;
+  color: #fff;
+  font-size: 22px;
+  left: 0;
+  letter-spacing: 0;
+  position: absolute;
+  & > a {
+    background: $orange;
+    display: inline-block;
+    //margin-left: 15px;
+    padding: 5px 10px 5px 15px;
+  }
+}
+
+.grid-ideia-title {
+  @extend %title-font;
+  font-size: 16px;
+  letter-spacing: 0;
+
+  @include breakpoint($break-tablet) {
+    font-size: 20px;
+  }
+}
+
+.grid-ideia-tags {
+  margin: 10px 0;
+}
+
+.grid-ideia-tag {
+  &::before {
+    content: "#";
+    color: $purple;
+    font-weight: bold;
+    .home & {
+      color: $orange;
+    }
+  }
+}
+
+.grid-ideia-author {
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.author-picture {
+  @include border-radius(16px);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: inline-block;
+  height: 32px;
+  margin-right: 5px;
+  vertical-align: middle;
+  width: 32px;
+}
+
+.grid-ideia-interact {
+  margin: 10px 0;
+}
+
+.grid-ideia-action {
+  margin-right: 8px;
+  .fa {
+    @include opacity(0.5);
+    color: $purple;
+    .home & {
+      color: $orange;
+    }
+  }
+  &.voted, &:hover {
+    .fa {
+      @include opacity(1);
+    }
+  }
+}
+
+.grid-ideia-button {
+  @include border-corner-radius(bottom, left, 10px);
+  @include border-corner-radius(bottom, right, 10px);
+  background: $purple;
+  border: 0;
+  bottom: 0;
+  color: #fff;
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  left: 0;
+  padding: 8px 15px;
+  position: absolute;
+  right: 0;
+  text-align: right;
+  width: 100%;
+  .home & {
+    background: $orange;
+  }
+}
+
+.grid-ideias-pagination {
+  font-size: 16px;
+  margin: 10px 0 40px;
+  text-align: center;
+}
+
+.grid-ideias-button {
+  @extend %title-font;
+  background: none;
+  border: solid 2px $purple;
+  color: $purple;
+  display: block;
+  font-size: 18px;
+  letter-spacing: 0;
+  padding: 5px 10px;
+  margin: 20px;
+  &:hover {
+    background: $purple;
+    color: #fff;
+  }
+  @include breakpoint($break-tablet) {
+    display: inline-block;
+    margin: 0 10px;
+  }
+}
+
+.pagination-spinner {
+  line-height: 1.8em;
+}
